@@ -1,0 +1,26 @@
+.salida {
+    margin: 10px;
+    list-style: none;
+    display: flex;
+    padding: 10px;
+}
+
+.winner {
+    padding: 10px;
+}
+
+.botones{
+    border: 1px solid #000000;
+    border-radius: 7px;
+    padding: 10px;
+    margin: 10px
+}
+
+.resultados{
+    margin: 10px;
+    border: 1px solid #000000;
+    display: flex;
+    padding: 10px;
+    color: green;
+
+}
