@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/piedrapapeltijera/static/css/main.6487c31d.css",
+    "main.css": "/piedrapapeltijera/static/css/main.d36a1b60.css",
     "main.js": "/piedrapapeltijera/static/js/main.c5d89a02.js",
     "index.html": "/piedrapapeltijera/index.html",
-    "main.6487c31d.css.map": "/piedrapapeltijera/static/css/main.6487c31d.css.map",
+    "main.d36a1b60.css.map": "/piedrapapeltijera/static/css/main.d36a1b60.css.map",
     "main.c5d89a02.js.map": "/piedrapapeltijera/static/js/main.c5d89a02.js.map"
   },
   "entrypoints": [
-    "static/css/main.6487c31d.css",
+    "static/css/main.d36a1b60.css",
     "static/js/main.c5d89a02.js"
   ]
 }
