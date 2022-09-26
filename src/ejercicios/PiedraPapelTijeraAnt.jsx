@@ -8,7 +8,7 @@ const ganaHumano = ['02', '10', '21']
 
 // Nombre, apellido, edad
 
-const PiedraPapelTijera = () => {
+const PiedraPapelTijeraAnt = () => {
 
   const [triunfador, setTriunfador] = useState(null)
   const [humano, setHumano] = useState(null) ;
@@ -85,4 +85,4 @@ const PiedraPapelTijera = () => {
   )
 }
 
-export default PiedraPapelTijera
+export default PiedraPapelTijeraAnt

@@ -5,58 +5,55 @@ import './PiedraPapelTijera.css'
 const juego = ["Piedra", "Papel", "Tijera"]
 const ganaHumano = ['02', '10', '21']
 
-let textoEligioHumano = ''
-let textoEligioIA = ''
-
-// Nombre, apellido, edad
 
 const PiedraPapelTijera = () => {
 
   const [triunfador, setTriunfador] = useState('')
-  const [canIA, setCanIA] = useState(0) ;
-  const [canHumano, setCanHumano] = useState(0) ;
+  const [seleccion, setSeleccion] = useState({EligioHumano: null, EligioIA: null})    ;
+  const [totales, setTotales] = useState({CanIA: 0, CanHumano: 0})    ;
+  
 
   const cambiaValor =  (eligioHumano) => { 
 
   const eligioIA =( parseInt(Math.random() * 10 ) ) % 3 
   console.log('eligioIA: ' + eligioIA)
-  console.log('cambiaValor: ' + eligioHumano)
+  console.log('eligioHumano: ' + eligioHumano)
 
-  textoEligioHumano=juego[eligioHumano]
-  textoEligioIA=juego[eligioIA]
-
-    
-  if (eligioHumano===eligioIA) 
-    {
-    setTriunfador("Empate")
-    } else {
-    const comparaElecciones= eligioHumano.toString() + eligioIA.toString()
-    const found = ganaHumano.includes(comparaElecciones);
-    
-    console.log('comparaElecciones: '+comparaElecciones)
-    console.log(found)
-
-        if (found) {
-            setTriunfador("Gano Humano!!!")
-            setCanHumano(canHumano+1)
-
-        }else{
-            setTriunfador("Gano IA!!!")
-            setCanIA(canIA+1);
-        } 
-    }
-
+  setSeleccion({ EligioHumano: eligioHumano, EligioIA: eligioIA } )
+  
   }    
         
   
-  
   useEffect(()=>{
-    console.log( `Triunfador: ${triunfador}` )
+    if (seleccion.EligioHumano === null) return
 
-  },[triunfador])
+//    console.log('seleccion.EligioIA: ' + seleccion.EligioIA)
+//    console.log('seleccion.EligioHumano: ' + seleccion.EligioHumano)
+    if (seleccion.EligioHumano === seleccion.EligioIA) 
+      {
+      setTriunfador("Empate")
+      } else {
+      const comparaElecciones= String(seleccion.EligioHumano) + String(seleccion.EligioIA)
+      const found = ganaHumano.includes(comparaElecciones);
+      
+      //console.log('comparaElecciones: '+comparaElecciones)
+      // console.log(found)
+  
+          if (found) {
+              setTriunfador("Gano Humano!!!")
+              setTotales({ CanIA: totales.CanIA, CanHumano: totales.CanHumano+1 })
+         //     console.log("CanIA:" +  totales.CanIA)
+  
+          }else{
+              setTriunfador("Gano IA!!!")
+              setTotales({ CanIA: totales.CanIA+1, CanHumano: totales.CanHumano })
+           //   console.log("CanHumano:" +  totales.CanHumano)
+          } 
+      }
+  
+  },[seleccion])
   
     
-
 
   return (
     <div>
@@ -67,10 +64,10 @@ const PiedraPapelTijera = () => {
         </h2>
         <div  className='salida'>
         <h2 className='winner'>
-            <p className='serHumano'>Tu eleccion: {textoEligioHumano}</p>
+            <p className='serHumano'>Tu eleccion: {juego[seleccion.EligioHumano]}</p>
         </h2>
         <h2 className='winner'>
-            <p className='IA'>IA: {textoEligioIA}</p>
+            <p className='IA'>IA: {juego[seleccion.EligioIA]}</p>
         </h2>
         </div>
         </div>
@@ -80,7 +77,7 @@ const PiedraPapelTijera = () => {
             <button onClick={()=>cambiaValor(2)} className='botones'>Tijera</button>
         </div>
         <footer className="resultados">
-            <p>Humano: {canHumano}  -   IA: {canIA} </p> 
+            <p>Humano: {totales.CanHumano}  -   IA: {totales.CanIA} </p> 
         </footer>
     </div>
   )
